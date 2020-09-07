@@ -1,6 +1,6 @@
-#SFND Radar target generation and detection
+# SFND Radar target generation and detection
 
-##Project layout
+## Project layout
 
 <img src="assets/projOverview.png">
 
@@ -12,7 +12,7 @@ This is the final project of the radar course provided by Udacity and included i
 4. Perform Range FFT on the received signal to determine the Range
 5. Towards the end, perform the CFAR processing on the output of 2nd FFT to display the target.
 
-##Radar System Requirements
+## Radar System Requirements
 
 <img src="assets/radarRequirements.png">
 
@@ -22,7 +22,7 @@ Max Range and Range Resolution will be considered here for waveform design.
 
 You will provide the initial range and velocity of the target. Range cannot exceed the max value of 200m and velocity can be any value in the range of -70 to + 70 m/s.
 
-####Task 1 : FMCW Waveform Design
+#### Task 1 : FMCW Waveform Design
 
 Using the given system requirements, design a FMCW waveform. Find its Bandwidth (B), chirp time (Tchirp) and slope of the chirp.
 
@@ -44,7 +44,7 @@ Slope = Bandwidth/Tchirp;
 '''
 
 
-####Task 2 : Simulation Loop
+#### Task 2 : Simulation Loop
 
 Simulate Target movement and calculate the beat or mixed signal for every timestamp.
 
@@ -69,7 +69,7 @@ for i=1:length(t)
 end
 '''
 
-####Task 3 : Range FFT (1st FFT)
+#### Task 3 : Range FFT (1st FFT)
 
 Implement the Range FFT on the Beat or Mixed Signal and plot the result.
 
@@ -99,7 +99,7 @@ axis ([0 200 0 1]);
 
 <img src="assets/generated_signal.png">
 
-####Task 4 : 2D CFAR
+#### Task 4 : 2D CFAR
 
 Implement the 2D CFAR process on the output of 2D FFT operation, i.e the Range Doppler Map.
 
