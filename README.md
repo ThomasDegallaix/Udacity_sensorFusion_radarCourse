@@ -26,7 +26,7 @@ You will provide the initial range and velocity of the target. Range cannot exce
 
 Using the given system requirements, design a FMCW waveform. Find its Bandwidth (B), chirp time (Tchirp) and slope of the chirp.
 
-'''
+```
 Rmax = 200;
 Range_resolution = 1;
 Vmax = 70;
@@ -41,14 +41,14 @@ Bandwidth = c / (2*Range_resolution);
 
 %The slope of the chirp 
 Slope = Bandwidth/Tchirp;
-'''
+```
 
 
 #### Task 2 : Simulation Loop
 
 Simulate Target movement and calculate the beat or mixed signal for every timestamp.
 
-'''
+```
 for i=1:length(t)         
     
     r_t(i) = R + V * t(i);
@@ -67,13 +67,13 @@ for i=1:length(t)
     Mix(i) = Tx(i).*Rx(i);
     
 end
-'''
+```
 
 #### Task 3 : Range FFT (1st FFT)
 
 Implement the Range FFT on the Beat or Mixed Signal and plot the result.
 
-'''
+```
 %reshape the vector into Nr*Nd array. Nr and Nd here would also define the size of
 %Range and Doppler FFT respectively.
 Mix = reshape(Mix, [Nr,Nd]);
@@ -95,7 +95,7 @@ figure ('Name','Range from First FFT')
 plot(single_Mix_fft);
 axis ([0 200 0 1]);
 
-'''
+```
 
 <img src="assets/generated_signal.png">
 
@@ -107,24 +107,24 @@ Implement the 2D CFAR process on the output of 2D FFT operation, i.e the Range D
 
 - Select the number of Training Cells in both the dimensions.
 
-'''
+```
 Tr=10;
 Td = 8;
-'''
+```
 
 - Select the number of Guard Cells in both dimensions around the Cell under test (CUT) for accurate estimation
 
-'''
+```
 Gr=4;
 Gd=4;
-'''
+```
 
 
 - Offset the threshold by SNR value in dB
 
-'''
+```
 offset=20;
-'''
+```
 
 - design a loop such that it slides the CUT across range doppler map by giving margins at the edges for Training and Guard Cells.
 - For every iteration sum the signal level within all the training cells. 
@@ -135,7 +135,7 @@ offset=20;
 
 NB : Use RDM[x,y] as the matrix from the output of 2D FFT for implementing CFAR
 
-'''
+```
 for i = Tr+Gr+1:(Nr/2)-(Gr+Tr)
     for j = Td+Gd+1:Nd-(Gd+Td)
         
@@ -162,7 +162,7 @@ for i = Tr+Gr+1:(Nr/2)-(Gr+Tr)
         end
     end
 end
-'''
+```
 
 Result after suppressing the non-thresholded cells atthe edges :
 
